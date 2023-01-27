@@ -7,9 +7,12 @@
 #include <string>
 #include <unordered_map>
 
-#include "config_parser.h"
+// #include "config_parser.h"
+
 
 namespace Config {
+    
+    class ConfigParser; // forward declaration
     /*
     * this will take string values from the parser and convert them to the correct type
     * think of more clean way for this TDOO
@@ -17,7 +20,7 @@ namespace Config {
     class ConfigDict {
     public:
         // ConfigDict();
-        ConfigDict(ConfigParser& parser);
+        ConfigDict(const ConfigParser&);
         // ConfigDict(const ConfigDict&) = default;
         // ConfigDict(ConfigDict&&) = default;
         // ConfigDict& operator=(const ConfigDict&) = default;

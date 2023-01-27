@@ -3,12 +3,13 @@
 #include <fstream>
 #include <filesystem>
 #include "config_dict.h"
+#include "config_parser.h"
 
 // add the configuration parameters manually in this structure, TODO: search for a better way
 
 namespace Config {
         // ConfigDict::ConfigDict() {
-        ConfigDict::ConfigDict(ConfigParser& parser) {
+        ConfigDict::ConfigDict(const ConfigParser& parser) {
         CYLINDER = parser.get("CYLINDER");
         PLANAR = parser.get("PLANAR");
         FOCAL_LENGTH = parser.get("FOCAL_LENGTH");
