@@ -78,7 +78,7 @@ public:
     double get_gauss_sigma() const;
     double get_gauss_window_factor() const;
 private:
-    vector<GaussianPyramid> pyramids; // length = num_octave
+    vector<GaussianPyramid> data; // length = num_octave
     int num_octave;
     int num_scale;
     double scale_factor;
