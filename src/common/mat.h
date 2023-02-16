@@ -16,6 +16,12 @@ public:
         static_assert(channel >= 0 && channel < channels, "channel index out of range");
         return data.get()[row * width * channels + col * channels + channel];
     }
+    const T *ptr(int r = 0) const { 
+        return m_data.get() + r * m_cols * m_channels;
+    }
+    T *ptr(int r = 0) {
+        return m_data.get() + r * m_cols * m_channels;
+    }
     Mat<T> clone() {
         Mat<T> result(height, width, channels);
         // memcpy(result.ptr(0), this->ptr(0), sizeof(T) * m_rows * m_cols * m_channels);

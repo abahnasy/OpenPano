@@ -25,3 +25,6 @@ Re-implementation of OpenPano by @ppwwyyxx, but with efficient tricks and modern
 - [ ] fix relative path issue with `std::filename::path`
 - [ ] change the binary output file to the src folder instead of the build
 - [ ] add author tag on top of the page
+- [ ] after finishing, follow notes from API Design document in Obsidian
+- [ ] Polish CMake files
+- [ ] add unit testing to CMAKE files
