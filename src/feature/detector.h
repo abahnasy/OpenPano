@@ -127,10 +127,11 @@ public:
 
 class GaussianPyramid {
 public:
-    GaussianPyramid(const Mat32f& img, int num_scale);
+    GaussianPyramid(const Mat32f& img, int num_scale, double scale_factor, double gauss_sigma, double gauss_window_factor);
     ~GaussianPyramid();
-    Mat32f* get_pyramid() const;
-    int get_num_scale() const;
+    // Mat32f* get_pyramid() const;
+    // int get_num_scale() const;
+    cal_mag_and_ort(int idx);
 private:
     std::vector<Mat32f> data; // length = num_scale
     std::vector<Mat32f> mag; // length = num_scale
@@ -141,10 +142,10 @@ private:
 
 class MultiScaleGaussianBlur {
 public:
-    MultiScaleGaussianBlur(int num_scale, double scale_factor, double gauss_sigma);
+    MultiScaleGaussianBlur(int num_scale, double scale_factor, double gauss_sigma, double gauss_window_factor);
     ~MultiScaleGaussianBlur();
-    std::vector<Mat32f> get_blurred_images(const Mat32f& img) const;
-    Mat32f get_blurred_image(const Mat32f& img, int scale_idx) const;
+    // std::vector<Mat32f> get_blurred_images(const Mat32f& img) const;
+    Mat32f run(const Mat32f& img, int scale_idx) const;
     
 private:
     std::vector<GaussianBlur> data; // length = num_scale
@@ -235,6 +236,7 @@ public:
         // over rows
         for(size_t i{0}; i < h; ++i) {
             const T* dest = blurred_img.ptr(i); // second conv on the result of the first one
+            // TOOD: change with std::copy()
             memcopy((void*)cur_line, (void*)dest, w*sizeof(T));
             // for(size_t j{0}; j < w; ++j) {
             //     cur_line[j] = *src;
